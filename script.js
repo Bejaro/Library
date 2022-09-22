@@ -50,7 +50,7 @@ function updateLibrary(){
         author.innerHTML = (myLibrary[i].author);
         author.className= "author";
         var pages = document.createElement("p")
-        pages.innerHTML = (myLibrary[i].pages);
+        pages.innerHTML = (myLibrary[i].pages + " pages");
         pages.className= "pages";
         var read = document.createElement("p")
         read.innerHTML =(myLibrary[i].read);
