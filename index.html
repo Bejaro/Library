@@ -12,7 +12,18 @@
     <div class="container">
         <div class="header">
             <p class="Title">Welcome to the Library</p>
-            <button class="librarybutton">+</button>
+            <button class="button librarybutton" id="addbutton">Add a Book</button>
+            <form class="formbox hidden" method="post" id="form">
+                <label class="formlabel" for="title">Title:</label>
+                <input required class="input" type="text" id="title" name="title">
+                <label class="formlabel" for="author">Author:</label>
+                <input required class="input" type="text" id="author" name="author">
+                <label class="formlabel" for="pages">Pagecount:</label>
+                <input required class="input" type="text" id="pages" name="pages">
+                <label class="formlabel" for="read">Have you read it?</label>
+                <input class="input" type="checkbox"id="read" name="read">
+                <button type="submit" id="submitbutton" class="button formbutton" form="form">+</button>
+            </form>
         </div>
             <div class="shelves" id="shelves">
                 <div class="book">

@@ -1,6 +1,16 @@
 let myLibrary = [];
 let shelf = document.getElementById("shelves");
 var booksDisplayed = document.getElementsByClassName("book");
+const addButton = document.getElementById("addbutton");
+const submitButton = document.getElementById("submitbutton");
+const formBox = document.getElementById("form");
+
+addButton.addEventListener('click', showForm)
+submitButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    addBookToLibrary(title.value, author.value, pages.value, read.value);
+    hideForm();    
+});
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -16,8 +26,17 @@ const LOTR = new Book('Lord of the Rings', 'J.R.R Tolkien', 1178, true);
 const Hunger = new Book('The Hunger Games', 'Suzanne Collins', 384, true);
 myLibrary.push(LOTR, Hunger);
 
+function showForm(){
+    formBox.classList.remove('hidden')
+}
+
+function hideForm(){
+    formBox.classList.add('hidden')
+}
+
 function addBookToLibrary(title, author, pages, read){
     const newBook = new Book(title, author, pages, read);
+    console.log (newBook);
     myLibrary.push(newBook);
     updateLibrary();
 }
