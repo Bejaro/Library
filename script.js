@@ -23,7 +23,7 @@ function Book(title, author, pages, read){
 }
 
 const LOTR = new Book('Lord of the Rings', 'J.R.R Tolkien', 1178, true);
-const Hunger = new Book('The Hunger Games', 'Suzanne Collins', 384, true);
+const Hunger = new Book('The Hunger Games', 'Suzanne Collins', 384, false);
 myLibrary.push(LOTR, Hunger);
 
 function showForm(){
@@ -62,6 +62,7 @@ function updateLibrary(){
     for (let i = 0; i < bookCount; i++){
         var book = document.createElement("div");
         book.className = "book";
+        book.dataset.bookid = i;
         var title = document.createElement("p");
         title.innerHTML = (myLibrary[i].title);
         title.className= "title";
@@ -72,12 +73,20 @@ function updateLibrary(){
         pages.innerHTML = (myLibrary[i].pages + " pages");
         pages.className= "pages";
         var read = document.createElement("p")
-        read.innerHTML =(myLibrary[i].read);
+        read.innerHTML =("Read it?");
         read.className= "read";
+        var readCheck = document.createElement("input");
+        readCheck.type = "checkbox";
+        readCheck.checked = myLibrary[i].read;
+        var removeButton = document.createElement("button");
+        removeButton.innerHTML = "Remove";
+        removeButton.className = "removeButton";
         book.appendChild(title);
         book.appendChild(author);
         book.appendChild(pages);
         book.appendChild(read);
+        read.appendChild(readCheck);
+        book.appendChild(removeButton);
         shelf.appendChild(book); 
     }
 }

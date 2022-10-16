@@ -97,6 +97,11 @@ body{
     margin: 5px;
 }
 
+.removeButton{
+    color: white;
+    background-color: red;
+}
+
 /*Fonts*/
 
 .title{
