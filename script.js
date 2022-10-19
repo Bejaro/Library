@@ -36,7 +36,6 @@ function hideForm(){
 
 function addBookToLibrary(title, author, pages, read){
     const newBook = new Book(title, author, pages, read);
-    console.log (newBook);
     myLibrary.push(newBook);
     updateLibrary();
 }
@@ -57,7 +56,6 @@ function updateLibrary(){
     while (shelf.firstChild && bookCount > 0) {
         shelf.removeChild(shelf.firstChild);
     }
-    console.log (bookCount);
     //Add all books plus the new one
     for (let i = 0; i < bookCount; i++){
         var book = document.createElement("div");
@@ -79,6 +77,10 @@ function updateLibrary(){
         readCheck.type = "checkbox";
         readCheck.checked = myLibrary[i].read;
         var removeButton = document.createElement("button");
+        removeButton.addEventListener ("click", function(event){
+            var removed = myLibrary.splice(i, 1);
+            updateLibrary();
+        })
         removeButton.innerHTML = "Remove";
         removeButton.className = "removeButton";
         book.appendChild(title);
