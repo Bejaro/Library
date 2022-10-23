@@ -8,7 +8,7 @@ const formBox = document.getElementById("form");
 addButton.addEventListener('click', showForm)
 submitButton.addEventListener('click', function(event) {
     event.preventDefault();
-    addBookToLibrary(title.value, author.value, pages.value, read.value);
+    addBookToLibrary(title.value, author.value, pages.value, read.checked);
     hideForm();    
 });
 
@@ -46,6 +46,15 @@ function displayBooks(){
     }
 }
 
+function readToggle(bookToToggle){
+    if (this.checked = true){
+        myLibrary[bookToToggle].read = true;
+    }
+    if (this.checked = false){
+        myLibrary[bookToToggle].read = false;
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     updateLibrary();
 });
@@ -53,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function updateLibrary(){
     let bookCount = myLibrary.length;
     //Clear books for update
-    while (shelf.firstChild && bookCount > 0) {
+    while (shelf.firstChild && bookCount > -1) {
         shelf.removeChild(shelf.firstChild);
     }
     //Add all books plus the new one
@@ -75,7 +84,16 @@ function updateLibrary(){
         read.className= "read";
         var readCheck = document.createElement("input");
         readCheck.type = "checkbox";
-        readCheck.checked = myLibrary[i].read;
+        if (myLibrary[i].read == true){
+            readCheck.checked = true;
+        }
+        if (myLibrary[i].read == false){
+            readCheck.checked = false;
+        }
+        readCheck.dataset.bookid = i;
+        readCheck.addEventListener('click', function(event){
+            readToggle(i);
+        })
         var removeButton = document.createElement("button");
         removeButton.addEventListener ("click", function(event){
             var removed = myLibrary.splice(i, 1);
